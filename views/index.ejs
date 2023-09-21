@@ -1,0 +1,155 @@
+<div class="row flex-lg-row-reverse align-items-center g-5 py-4 mb-4">
+  <div class="col-12 col-lg-6">
+    <img src="/img/front.jpg" width="607" height="510" class="d-block mx-lg-auto img-fluid" loading="lazy" alt="Cooking With Node.js">
+  </div>
+
+  <div class="col-12 col-lg-6">
+    <h1 class="display-5 fw-bold mb-3">Huge selection of Interesting Movies</h1>
+    <p class="lead">
+      Explore our huge selection of Interesting movies People watch and like around the World.Movie Genre includes  Comedy, Horror, Romance, Period Movies, Cartoon and Anime.</p>
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+      <a href="/explore-latest" class="btn btn-primary btn-dark btn-lg px-4 me-md-2" style="background-color: #cb0610;">Explore Latest</a>
+      <a href="/explore-random" class="btn btn-outline-secondary btn-lg px-4 me-md-2">Show Random</a>
+    </div>
+  </div>
+</div>
+
+<!-- Categories Start -->
+
+<div class="row row-cols-2 row-cols-lg-6 g-2 g-lg-3 py-4">
+
+
+  <% if(categories != '') { %>
+    <% categories.forEach(function(category, index) { %>
+      <a href="/categories/<%- category.name %>" class="col text-center category__link">
+        <div class="category__img shadow">
+          <img src="img/<%- category.image %>" alt="<%- category.name %>" loading="lazy">
+        </div>
+        <div class="pt-1"><%- category.name %></div>
+      </a>
+    <% }) %>
+  <% } %>
+
+  <a href="/categories" class="col text-center category__link">
+    <div class="category__img shadow">
+      <img src="img/viewall.jpg" alt="View All Categories" loading="lazy">
+    </div>
+    <div class="pt-1">View All</div>
+  </a>
+
+</div>
+<!-- Categories End -->
+
+<!-- Latest Start -->
+
+<section class="pb-4 pt-4">
+  <div class="d-flex mb-2 align-items-center">
+    <h2>Latest Movies</h2>
+    <a href="/explore-latest" class="ms-auto">View More</a>
+  </div>
+
+  <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+
+    <% if(cat != '') { %>
+      <% cat.latest.forEach(function(movie, index){ %>
+      <a href="/movie/<%= movie._id %>" class="col text-center category__link">
+        <div class="category__img category__img--large shadow">
+          <img src="/uploads/<%= movie.image %>" alt="<%= movie.name %>" loading="lazy">
+        </div>
+        <div class="pt-1"><%= movie.name %></div>
+      </a>
+      <% }) %>
+    <% } else { %>
+      <p>No items found.</p>
+    <% } %>
+  </div>
+
+</section>
+<!-- Latest End -->
+
+<!-- comedy Start -->
+<section class="pb-4 pt-4">
+  <div class="d-flex mb-2 align-items-center">
+    <h2>Comedy Movies</h2>
+    <a href="/categories/Comedy" class="ms-auto">View More</a>
+  </div>
+
+  <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+    <% if(typeof cat.Comedy !== 'undefined' && cat.Comedy.length > 0) { %>
+      <% cat.Comedy.forEach(function(movie, index){ %>
+      <a href="/movie/<%= movie._id %>" class="col text-center category__link">
+        <div class="category__img category__img--large shadow">
+          <img src="/uploads/<%= movie.image %>" alt="<%= movie.name %>" loading="lazy">
+        </div>
+        <div class="pt-1"><%= movie.name %></div>
+      </a>
+      <% }) %>
+    <% } else { %>
+      <p>No items found.</p>
+    <% } %>
+  </div>
+</section>
+<!-- Comedy End -->
+
+<!-- Horror Start -->
+<section class="pb-4 pt-4">
+  <div class="d-flex mb-2 align-items-center">
+    <h2>Horror Movies</h2>
+    <a href="/categories/Horror" class="ms-auto">View More</a>
+  </div>
+
+  <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+    <% if(cat.Horror != '') { %>
+      <% cat.Horror.forEach(function(movie, index){ %>
+      <a href="/movie/<%= movie._id %>" class="col text-center category__link">
+        <div class="category__img category__img--large shadow">
+          <img src="/uploads/<%= movie.image %>" alt="<%= movie.name %>" loading="lazy">
+        </div>
+        <div class="pt-1"><%= movie.name %></div>
+      </a>
+      <% }) %>
+    <% } else { %>
+      <p>No items found.</p>
+    <% } %>
+  </div>
+</section>
+<!-- Horror End -->
+
+<!-- Cartoon movies -->
+
+<section class="pb-4 pt-4">
+  <div class="d-flex mb-2 align-items-center">
+    <h2>Cartoon Movies</h2>
+    <a href="/categories/Cartoon" class="ms-auto">View More</a>
+  </div>
+
+  <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+    <% if(cat.Cartoon != '') { %>
+      <% cat.Cartoon.forEach(function(movie, index){ %>
+      <a href="/movie/<%= movie._id %>" class="col text-center category__link">
+        <div class="category__img category__img--large shadow">
+          <img src="/uploads/<%= movie.image %>" alt="<%= movie.name %>" loading="lazy">
+        </div>
+        <div class="pt-1"><%= movie.name %></div>
+      </a>
+      <% }) %>
+    <% } else { %>
+      <p>No items found.</p>
+    <% } %>
+  </div>
+</section>
+<!-- Submit - Start -->
+
+<section class="px-4 py-5 my-5 text-center">
+  <h1 class="display-5 fw-bold" style="text-align: center; margin:40px;">Tell Us What You Like</h1>
+  <img src="/img/publishh.jpg" class="d-block mx-auto mb-4 img-fluid" alt="Publish your movie for FREE today" width="866" height="98" loading="lazy" style="border-radius: 20px;">
+  <h1 class="display-5 fw-bold">What's Your Favourite Movie</h1>
+  <div class="col-lg-6 mx-auto">
+    <p class="lead mb-4">Publish your favourite Movie in front of Thousands of People Absolutely for free.</p>
+    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+      <a href="/submit-movie" class="btn btn-primary btn-dark btn-lg"style="background-color:#cb0610;" >Submit Movie</a>
+    </div>
+  </div>
+</section>
+<!-- Submit - End -->
